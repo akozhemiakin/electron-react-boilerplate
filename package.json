@@ -3,7 +3,7 @@
   "productName": "ElectronReact",
   "version": "0.10.0",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
-  "main": "main.js",
+  "main": "root.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --retries 2 --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
     "test-all": "npm run lint && npm run flow && npm run test && npm run build",
@@ -18,7 +18,7 @@
     "start": "cross-env NODE_ENV=production electron ./app/",
     "flow": "flow",
     "flow-typed": "flow-typed install",
-    "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.development",
+    "start-hot": "cross-env HOT=1 NODE_ENV=development electron ./app/",
     "postinstall": "concurrently \"install-app-deps\" \"node node_modules/fbjs-scripts/node/check-dev-engines.js package.json\"",
     "dev": "npm run hot-server -- --start-hot",
     "package": "npm run build && build --publish never",
@@ -53,7 +53,8 @@
       "app.html",
       "main.js",
       "main.js.map",
-      "package.json"
+      "package.json",
+      "root.js"
     ],
     "win": {
       "target": "nsis"
